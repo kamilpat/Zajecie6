@@ -1,0 +1,7 @@
+﻿  Program1.cpp
+d:\computer_graphics-master\computer_graphics-master\lab06\program1\program1\program1.cpp(342): warning C4305: '+=': truncation from 'double' to 'GLfloat'
+d:\computer_graphics-master\computer_graphics-master\lab06\program1\program1\program1.cpp(347): warning C4305: '-=': truncation from 'double' to 'GLfloat'
+d:\computer_graphics-master\computer_graphics-master\lab06\program1\program1\program1.cpp(408): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+d:\computer_graphics-master\computer_graphics-master\lab06\program1\program1\program1.cpp(410): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+  Program1.vcxproj -> D:\computer_graphics-master\computer_graphics-master\Lab06\Program1\Debug\Program1.exe
+  Program1.vcxproj -> D:\computer_graphics-master\computer_graphics-master\Lab06\Program1\Debug\Program1.pdb (Full PDB)
