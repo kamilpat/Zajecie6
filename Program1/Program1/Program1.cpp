@@ -10,7 +10,9 @@ JanuszG@enter.net.pl
 */
 
 #include <GL/glut.h>
+
 #include <stdlib.h>
+#include "materials.h"
 
 // stałe do obsługi menu podręcznego
 
@@ -18,12 +20,250 @@ enum
 {
 	FULL_WINDOW,       // aspekt obrazu - całe okno
 	ASPECT_1_1,        // aspekt obrazu 1:1
+	WIRE_SPHERE,       // kula
+	WIRE_CONE,         // stożek
+	WIRE_CUBE,         // sześcian
+	WIRE_TORUS,        // torus
+	WIRE_DODECAHEDRON, // dwunastościan
+	WIRE_TEAPOT,       // czajnik
+	WIRE_OCTAHEDRON,   // ośmiościan
+	WIRE_TETRAHEDRON,  // czworościan
+	WIRE_ICOSAHEDRON,  // dwudziestościan
+	SOLID_SPHERE,       // kula
+	SOLID_CONE,         // stożek
+	SOLID_CUBE,         // sześcian
+	SOLID_TORUS,        // torus
+	SOLID_DODECAHEDRON, // dwunastościan
+	SOLID_TEAPOT,       // czajnik
+	SOLID_OCTAHEDRON,   // ośmiościan
+	SOLID_TETRAHEDRON,  // czworościan
+	SOLID_ICOSAHEDRON,  // dwudziestościan
+
+
 	EXIT               // wyjście
 };
+int object = SOLID_CONE;
 
 // aspekt obrazu
 
 int aspect = FULL_WINDOW;
+
+void DrawOneObject(int value) {
+	switch (value)
+	{
+
+	case WIRE_SPHERE:
+		glutWireSphere(1.0, 20, 10);
+		break;
+
+		// stożek
+	case WIRE_CONE:
+		glutWireCone(0.5, 1.0, 10, 5);
+		break;
+
+		// sześcian
+	case WIRE_CUBE:
+		glutWireCube(1.0);
+		break;
+
+		// torus
+	case WIRE_TORUS:
+		glutWireTorus(0.2, 1, 10, 20);
+		break;
+
+		// dwunastościan
+	case WIRE_DODECAHEDRON:
+		glutWireDodecahedron();
+		break;
+
+		// czajnik
+	case WIRE_TEAPOT:
+		glutWireTeapot(1.0);
+		break;
+
+		// ośmiościan
+	case WIRE_OCTAHEDRON:
+		glutWireOctahedron();
+		break;
+
+		// czworościan
+	case WIRE_TETRAHEDRON:
+		glutWireTetrahedron();
+		break;
+
+		// dwudziestościan
+	case WIRE_ICOSAHEDRON:
+		glutWireIcosahedron();
+		break;
+
+
+
+
+
+	case SOLID_SPHERE:
+		glutSolidSphere(1.0, 20, 10);
+		break;
+
+		// stożek
+	case SOLID_CONE:
+		glutSolidCone(0.5, 1.0, 10, 5);
+		break;
+
+		// sześcian
+	case SOLID_CUBE:
+		glutSolidCube(1.0);
+		break;
+
+		// torus
+	case SOLID_TORUS:
+		glutSolidTorus(0.2, 1, 10, 20);
+		break;
+
+		// dwunastościan
+	caseSOLIDE_DODECAHEDRON:
+		glutSolidDodecahedron();
+		break;
+
+		// czajnik
+	case SOLID_TEAPOT:
+		glutSolidTeapot(1.0);
+		break;
+
+		// ośmiościan
+	case SOLID_OCTAHEDRON:
+		glutSolidOctahedron();
+		break;
+
+		// czworościan
+	case SOLID_TETRAHEDRON:
+		glutSolidTetrahedron();
+		break;
+
+		// dwudziestościan
+	case SOLID_ICOSAHEDRON:
+		glutSolidIcosahedron();
+		break;
+
+	}
+}
+
+
+void Menu(int value)
+{
+	switch (value)
+	{
+		// kula
+	case WIRE_SPHERE:
+		object = value;
+		break;
+
+		// stożek
+	case WIRE_CONE:
+		object = value;
+		break;
+
+		// sześcian
+	case WIRE_CUBE:
+		object = value;
+		break;
+
+		// torus
+	case WIRE_TORUS:
+		object = value;
+		break;
+
+		// dwunastościan
+	case WIRE_DODECAHEDRON:
+		object = value;
+		break;
+
+		// czajnik
+	case WIRE_TEAPOT:
+		object = value;
+		break;
+
+		// ośmiościan
+	case WIRE_OCTAHEDRON:
+		object = value;
+		break;
+
+		// czworościan
+	case WIRE_TETRAHEDRON:
+		object = value;
+		break;
+
+		// dwudziestościan
+	case WIRE_ICOSAHEDRON:
+		object = value;
+		break;
+
+
+	case SOLID_SPHERE:
+		object = value;
+		break;
+
+		// stożek
+	case SOLID_CONE:
+		object = value;
+		break;
+
+		// sześcian
+	case SOLID_CUBE:
+		object = value;
+		break;
+
+		// torus
+	case SOLID_TORUS:
+		object = value;
+		break;
+
+		// dwunastościan
+	case SOLID_DODECAHEDRON:
+		object = value;
+		break;
+
+		// czajnik
+	case SOLID_TEAPOT:
+		object = value;
+		break;
+
+		// ośmiościan
+	case SOLID_OCTAHEDRON:
+		object = value;
+		break;
+
+		// czworościan
+	case SOLID_TETRAHEDRON:
+		object = value;
+		break;
+
+		// dwudziestościan
+	case SOLID_ICOSAHEDRON:
+		object = value;
+		break;
+		// obszar renderingu - całe okno
+	case FULL_WINDOW:
+		aspect = FULL_WINDOW;
+//		Reshape(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+		break;
+
+		// obszar renderingu - aspekt 1:1
+	case ASPECT_1_1:
+		aspect = ASPECT_1_1;
+//		Reshape(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+		break;
+
+		// wyjście
+	case EXIT:
+		exit(0);
+
+	}
+
+
+
+}
+
+
 
 // rozmiary bryły obcinania
 
@@ -59,71 +299,71 @@ int button_x, button_y;
 // funkcja rysująca blok 3x3
 void Cone4x4() 
 {
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, -1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, -1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, -1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 
 }
 void Cone3x3()
 {
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, -1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, 1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, 1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 }
 
 // funkcja rysująca blok 2x2
 
 void Cone2x2()
 {
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, -1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 }
 
 // funkcja rysująca piramidę z sześcianów
@@ -150,33 +390,33 @@ void Pyramid()
 
 	glPushMatrix();
 	glTranslatef(0, 3, -1);
-	glutWireCone(0.5, 1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, -1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, -1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, -1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, -1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, -1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(0.0, -1.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glPopMatrix();
 	glPushMatrix();
 	glTranslatef(3, 0, -1);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-2.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glTranslatef(-1.0, 0.0, 0.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glPopMatrix();
 
 	// podstawa 6x6
@@ -255,7 +495,7 @@ void Pyramid()
 	// szósty poziom 1x1
 	glPushMatrix();
 	glTranslatef(0.0, 0.0, 5.0);
-	glutWireCone(0.5,1, 10, 5);
+	DrawOneObject(object);
 	glPopMatrix();
 }
 
@@ -290,6 +530,19 @@ void Display()
 
 	// kolor krawędzi obiektu
 	glColor3f(0.0, 0.0, 0.0);
+
+	const GLfloat *ambient = BrassAmbient;
+	const GLfloat *diffuse = BrassDiffuse;
+	const GLfloat *specular = BrassSpecular;
+	GLfloat shininess = BrassShininess;
+	glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+	glMaterialf(GL_FRONT, GL_SHININESS, shininess);
+	glColorMaterial(GL_FRONT, GL_AMBIENT);
+	glEnable(GL_COLOR_MATERIAL);
+
+
 
 	// rysowanie piramidy
 	Pyramid();
@@ -414,29 +667,6 @@ void MouseMotion(int x, int y)
 }
 
 // obsługa menu podręcznego
-
-void Menu(int value)
-{
-	switch (value)
-	{
-		// obszar renderingu - całe okno
-	case FULL_WINDOW:
-		aspect = FULL_WINDOW;
-		Reshape(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
-		break;
-
-		// obszar renderingu - aspekt 1:1
-	case ASPECT_1_1:
-		aspect = ASPECT_1_1;
-		Reshape(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
-		break;
-
-		// wyjście
-	case EXIT:
-		exit(0);
-	}
-}
-
 int main(int argc, char *argv[])
 {
 	// inicjalizacja biblioteki GLUT
@@ -481,9 +711,64 @@ int main(int argc, char *argv[])
 
 	glutAddMenuEntry("Aspekt obrazu 1:1", ASPECT_1_1);
 
+	int MenuKsztalt = glutCreateMenu(Menu);
+#ifdef WIN32
+
+	glutAddMenuEntry("Wire Cone", WIRE_CONE);
+#else
+
+	glutAddMenuEntry("Solid Cone", SOLID_CONE);
+	glutAddMenuEntry("Wire Torus", WIRE_TORUS);
+	glutAddMenuEntry("Solid Torus",SOLID_TORUS);
+
+
+	glutAddMenuEntry("Wire DODECAHEDRON", WIRE_DODECAHEDRON);
+	glutAddMenuEntry("Solid DODECAHEDRON", SOLID_DODECAHEDRON);
+
+	glutAddMenuEntry("Wire TEAPOT", WIRE_TEAPOT);
+	glutAddMenuEntry("Solid TEAPOT", SOLID_TEAPOT);
+
+	glutAddMenuEntry("Wire OCTAHEDRON", WIRE_OCTAHEDRON);
+	glutAddMenuEntry("Solid OCTAHEDRON", SOLID_OCTAHEDRON);
+
+	glutAddMenuEntry("Wire TETRAHEDRON", WIRE_TETRAHEDRON);
+	glutAddMenuEntry("Solid TETRAHEDRON", SOLID_TETRAHEDRON);
+
+	glutAddMenuEntry("Wire ICOSAHEDRON", WIRE_ICOSAHEDRON);
+	glutAddMenuEntry("Solid ICOSAHEDRON", SOLID_ICOSAHEDRON);
+
+	glutAddMenuEntry("Wire Sphere", WIRE_SPHERE);
+	glutAddMenuEntry("Solid Sphere", SOLID_SPHERE);
+
+
+#endif
+	glutAddMenuEntry("Solid Cone", SOLID_CONE);
+	glutAddMenuEntry("Wire Torus", WIRE_TORUS);
+	glutAddMenuEntry("Solid Torus", SOLID_TORUS);
+
+
+	glutAddMenuEntry("Wire DODECAHEDRON", WIRE_DODECAHEDRON);
+	glutAddMenuEntry("Solid DODECAHEDRON", SOLID_DODECAHEDRON);
+
+	glutAddMenuEntry("Wire TEAPOT", WIRE_TEAPOT);
+	glutAddMenuEntry("Solid TEAPOT", SOLID_TEAPOT);
+
+	glutAddMenuEntry("Wire OCTAHEDRON", WIRE_OCTAHEDRON);
+	glutAddMenuEntry("Solid OCTAHEDRON", SOLID_OCTAHEDRON);
+
+	glutAddMenuEntry("Wire TETRAHEDRON", WIRE_TETRAHEDRON);
+	glutAddMenuEntry("Solid TETRAHEDRON", SOLID_TETRAHEDRON);
+
+	glutAddMenuEntry("Wire ICOSAHEDRON", WIRE_ICOSAHEDRON);
+	glutAddMenuEntry("Solid ICOSAHEDRON", SOLID_ICOSAHEDRON);
+
+	glutAddMenuEntry("Wire Sphere", WIRE_SPHERE);
+	glutAddMenuEntry("Solid Sphere", SOLID_SPHERE);
+
 	// menu główne
 	glutCreateMenu(Menu);
 	glutAddSubMenu("Aspekt obrazu", MenuAspect);
+	glutAddSubMenu("Ksztalt", MenuKsztalt);
 #ifdef WIN32
 
 	glutAddMenuEntry("Wyjście", EXIT);
